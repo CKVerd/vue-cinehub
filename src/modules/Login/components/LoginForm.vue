@@ -9,12 +9,12 @@
         <input
           v-model="loginFormData.username"
           placeholder="Username"
-          class="text-lg border-b-[1px] min-w-[300px] font-economica border-gray-500 placeholder-zinc-300 focus:outline-none p-2 tracking-wide" />
+          class="text-lg border-b-[1px] min-w-[300px] font-economica border-gray-500 placeholder-zinc-400 focus:outline-none p-2 tracking-wide bg-transparent" />
         <input
           v-model="loginFormData.password"
           type="password"
           placeholder="Password"
-          class="text-lg border-b-[1px] font-economica border-gray-500 placeholder-zinc-300 focus:outline-none p-2 tracking-wide" />
+          class="text-lg border-b-[1px] font-economica border-gray-500 placeholder-zinc-400 focus:outline-none p-2 tracking-wide bg-transparent" />
         <input
           type="submit"
           value="Login"
@@ -22,7 +22,7 @@
       </div>
     </form>
 
-    <span class="text-lg font-economica mt-8 text-zinc-300 w-[70%]"
+    <span class="text-lg font-economica mt-8 text-zinc-400 w-[70%]"
       >Forgot your password? Contact your system administrator to request
       access.
     </span>
