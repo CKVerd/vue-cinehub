@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-gray-900 w-full min-h-screen flex flex-col items-center py-12">
+  <div class="bg-gray-900 w-full min-h-screen flex flex-col items-center pt-12">
     <div class="flex flex-col md:w-2/3 w-10/12">
       <h1 class="text-white font-oswald text-3xl">Now Showing</h1>
       <div class="flex md:flex-row flex-col justify-between mt-6">
@@ -17,7 +17,10 @@
         </select>
       </div>
 
-      <div class="w-full grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 lg:px-10 md:px-0 mt-10 place-items-evenly gap-10">
+      <div
+        class="w-full grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 lg:px-10 md:px-0 mt-10 place-items-evenly gap-10 max-h-[70vh] overflow-y-scroll">
+        <CinemaCard />
+        <CinemaCard />
         <CinemaCard />
         <CinemaCard />
         <CinemaCard />
