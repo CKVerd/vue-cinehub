@@ -17,7 +17,7 @@
         </select>
       </div>
 
-      <div class="w-full grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 px-10 mt-10 place-items-evenly gap-10">
+      <div class="w-full grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 lg:px-10 md:px-0 mt-10 place-items-evenly gap-10">
         <CinemaCard />
         <CinemaCard />
         <CinemaCard />

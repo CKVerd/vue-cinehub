@@ -1,10 +1,11 @@
 <template>
   <div
-    class="w-[100%] md:h-[350px] lg:h-[300px] xl:h-[500px] h-[550px] group bg-white relative">
+    class="w-[100%] md:w-[105%] md:h-[350px] lg:h-[300px] xl:h-[500px] 2xl:h-[600px] h-[550px] group bg-white relative active:scale-[97%]  transition-all duration-100 ease-linear"
+    @click="click">
     <div
-      class="z-1 w-full h-full bg-black group-hover:opacity-60 hover:cursor-pointer opacity-0 absolute transition-all duration-200 ease-linear"></div>
+      class="z-1 w-full h-full bg-black group-hover:opacity-60 opacity-0 absolute transition-all duration-200 ease-linear"></div>
     <div
-      class="absolute z-2 group-hover:flex flex-col w-full h-full hidden justify-center text-center items-center gap-2">
+      class="absolute z-2 group-hover:flex flex-col w-full h-full hidden justify-center text-center items-center gap-2 group-hover:cursor-pointer">
       <h1 class="font-oswald text-white text-2xl underline">Cinema 1</h1>
       <h1 class="font-oswald text-white text-2xl">Captain Marvel</h1>
       <h1 class="font-economica text-white text-xl">Adults: $14.99</h1>
@@ -16,3 +17,9 @@
       alt="Movie Poster" />
   </div>
 </template>
+
+<script setup>
+function click() {
+  console.log('CLICKED');
+}
+</script>
