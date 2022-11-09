@@ -14,6 +14,14 @@ const router = createRouter({
       component: () => import('@/modules/Dashboard/views/Dashboard.vue'),
     },
     {
+      path: '/cinema/:cinemaId',
+      name: 'Cinema',
+      meta: {
+        auth: true,
+      },
+      component: () => import('@/modules/Cinema/views/Cinema.vue'),
+    },
+    {
       path: '/login',
       name: 'Login',
       component: () => import('@/modules/Login/views/Login.vue'),
