@@ -12,5 +12,6 @@ app.use(createPinia());
 app.use(router);
 app.provide('UNSPLASH_API', import.meta.env.VITE_UNSPLASH_ENDPOINT);
 app.provide('UNSPLASH_ID', import.meta.env.VITE_UNSPLASH_ID);
+app.provide('CINEMA_API', import.meta.env.VITE_CINEMA_API);
 
 app.mount('#app');

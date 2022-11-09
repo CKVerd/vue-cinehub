@@ -17,14 +17,13 @@
         </select>
       </div>
 
+      <div class="w-full pt-20 grid place-items-center" v-if="isLoadingCinemas">
+        <Spinner />
+      </div>
       <div
+        v-else
         class="w-full grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 lg:px-10 md:px-0 mt-10 place-items-evenly gap-10 max-h-[70vh] overflow-y-scroll">
-        <CinemaCard />
-        <CinemaCard />
-        <CinemaCard />
-        <CinemaCard />
-        <CinemaCard />
-        <CinemaCard />
+        <CinemaCard v-for="cinema in cinemaList" :key="cinema._id" />
       </div>
     </div>
   </div>
@@ -32,4 +31,17 @@
 
 <script setup>
 import CinemaCard from '../components/CinemaCard.vue';
+import Spinner from '@/modules/Core/components/Spinner.vue';
+import { onMounted, ref } from 'vue';
+import { useCinemaStore } from '../stores/Cinemas';
+
+const cinemaStore = useCinemaStore();
+const isLoadingCinemas = ref(true);
+const cinemaList = ref([]);
+
+onMounted(async () => {
+  isLoadingCinemas.value = true;
+  cinemaList.value = await cinemaStore.getCinemas();
+  isLoadingCinemas.value = false;
+});
 </script>
