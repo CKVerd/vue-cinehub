@@ -1,7 +1,7 @@
 import { ref, inject } from 'vue';
 import { defineStore } from 'pinia';
 
-const CINEMA_API = inject('CINEMA_API');
+// const CINEMA_API = inject('CINEMA_API');
 export const useCinemaStore = defineStore('cinemas', () => {
   const cinemas = ref([]);
 
@@ -12,5 +12,12 @@ export const useCinemaStore = defineStore('cinemas', () => {
     return cinemaList;
   }
 
-  return { cinemas, getCinemas };
+  async function getCinema(id) {
+    const cinemaData = await fetch(`/api/cinemas/${id}`)
+      .then((res) => res.json())
+      .then((data) => (cinemas.value = data));
+    return cinemaData;
+  }
+
+  return { cinemas, getCinemas, getCinema };
 });

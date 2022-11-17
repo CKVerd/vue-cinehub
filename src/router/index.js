@@ -7,7 +7,7 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      name: 'Home',
+      name: 'ViewHome',
       meta: {
         auth: true,
       },
@@ -15,7 +15,7 @@ const router = createRouter({
     },
     {
       path: '/cinema/:cinemaId',
-      name: 'Cinema',
+      name: 'ViewCinema',
       meta: {
         auth: true,
       },
@@ -23,7 +23,7 @@ const router = createRouter({
     },
     {
       path: '/login',
-      name: 'Login',
+      name: 'ViewLogin',
       component: () => import('@/modules/Login/views/Login.vue'),
     },
     {

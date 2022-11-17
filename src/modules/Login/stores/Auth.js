@@ -24,7 +24,7 @@ export const useAuthStore = defineStore('auth', () => {
       delete user.password;
       localStorage.setItem('user', user);
       cookies.set('authentication', true, '1d');
-      router.push({ name: 'Home' });
+      router.push({ name: 'ViewHome' });
       return console.log('Logged in');
     }
     return console.log('Wrong username or password');
