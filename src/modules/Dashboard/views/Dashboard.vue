@@ -22,8 +22,10 @@
       </div>
       <div
         v-else
-        class="w-full grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 lg:px-10 md:px-0 mt-10 place-items-evenly gap-10 max-h-[70vh] overflow-y-scroll">
-        <CinemaCard v-for="cinema in cinemaList" :key="cinema._id" />
+        class="w-full grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 lg:px-10 md:px-0 mt-10 place-items-evenly gap-10 max-h-[70vh] max-w-[70vw] overflow-y-scroll">
+        <template v-for="cinema in cinemaList" :key="cinema._id">
+          <CinemaCard :cinemaData="cinema" />
+        </template>
       </div>
     </div>
   </div>
