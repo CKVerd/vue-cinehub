@@ -33,9 +33,9 @@
             <div class="cinema-screen bg-zinc-300">
               <h1 class="text-center text-zinc-500 tracking-wider">SCREEN</h1>
             </div>
-            <div class="mt-14 w-full cinema-seats">
+            <div class="mt-14 w-full cinema-seats pb-5">
               <div
-                :class="`cinema-seat`"
+                class="cinema-seat"
                 :style="{
                   'grid-column-start': seat.colStart,
                   'grid-row-start': seat.rowStart,
@@ -98,11 +98,12 @@ onMounted(async () => {
   grid-template-rows: repeat(30, 1fr);
   place-items: center;
   row-gap: 4px;
+  height: 80vh;
 }
 
 .cinema-seat {
   width: 80%;
-  height: 25px;
+  height: 100%;
   border: 1px solid red;
 }
 </style>
