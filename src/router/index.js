@@ -37,7 +37,7 @@ const router = createRouter({
 router.beforeEach((to, from, next) => {
   if (to.matched.some((record) => record.meta.auth)) {
     if (!(cookies.get('authentication') === 'true')) {
-      next({ name: 'Login' });
+      next({ name: 'ViewLogin' });
     } else {
       next();
     }
