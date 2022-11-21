@@ -8,13 +8,7 @@
         <!-- Cinema Information -->
         <div class="w-full h-full">
           <div class="sticky top-10">
-            <div class="flex items-center group hover:cursor-pointer w-max">
-              <BackArrow class="group-hover:cursor-pointer" />
-              <h1
-                class="text-white text-xl ml-3 group-hover:underline group-hover:cursor-pointer">
-                Back
-              </h1>
-            </div>
+            <BackButton routeName="ViewHome" componentName="Back"/>
             <h1 class="underline text-xl text-white mt-4">
               {{ `Cinema ${cinemaData.cinemaNum}` }}
             </h1>
@@ -63,8 +57,8 @@
 import { useRoute } from 'vue-router';
 import { onMounted, ref, computed } from 'vue';
 import Spinner from '@/modules/Core/components/Spinner.vue';
-import BackArrow from '@/modules/Core/components/BackArrow.vue';
 import { useCinemaStore } from '@/modules/Dashboard/stores/Cinemas';
+import BackButton from '@/modules/Core/components/BackButton.vue';
 
 const cinemaData = ref({});
 const route = useRoute();
@@ -82,7 +76,6 @@ const cinemaId = computed(() => {
 async function fetchCinemaData(id) {
   state.value = STATES.FETCHING_DATA;
   cinemaData.value = await cinemaStore.getCinema(id);
-  console.log('CINEMA DATA', cinemaData.value);
   state.value = STATES.IDLE;
 }
 
