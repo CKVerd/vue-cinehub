@@ -8,21 +8,18 @@
         <!-- Cinema Information -->
         <div class="w-full h-full">
           <div class="sticky top-10">
-            <BackButton routeName="ViewHome" componentName="Back"/>
-            <h1 class="underline text-xl text-white mt-4">
-              {{ `Cinema ${cinemaData.cinemaNum}` }}
-            </h1>
-            <div class="mt-2 ml-2">
-              <span class="text-white text-normal underline">Movie: </span>
-              <span class="font-economica text-[18px] ml-2 text-white">
-                {{ cinemaData.title }}</span
-              >
-            </div>
-            <div class="flex ml-2">
-              <span class="text-white text-normal underline">Price: </span>
-              <ul class="text-white ml-4 font-economica text-[18px]">
+            <BackButton routeName="ViewHome" componentName="Back" />
+            <div class="text-white mt-4">
+              <h1 class="underline text-xl">Details</h1>
+              <ul
+                class="border-l-2 border-white pl-4 font-economica text-[18px] leading-6 pb-2 mt-4">
+                <li class="mt-2">{{ `Cinema ${cinemaData.cinemaNum}` }}</li>
+                <li>{{ cinemaData.title }}</li>
+                <l1>{{ dateShowing }}</l1>
                 <li>{{ `Adult: $${cinemaData.pricing?.adult}` }}</li>
                 <li>{{ `Children: $${cinemaData.pricing?.children}` }}</li>
+                <li>{{ `Occupied: ` }}</li>
+                <li>{{ `Unoccupied: ` }}</li>
               </ul>
             </div>
           </div>
@@ -72,6 +69,10 @@ const state = ref(STATES.IDLE);
 const cinemaId = computed(() => {
   return route.params.cinemaId;
 });
+
+const dateShowing = computed(() => {
+  return new Date(cinemaData.value.dateShowing).toLocaleDateString()
+})
 
 async function fetchCinemaData(id) {
   state.value = STATES.FETCHING_DATA;
