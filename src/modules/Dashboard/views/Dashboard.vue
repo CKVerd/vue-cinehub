@@ -16,10 +16,16 @@
           <option>Comedy</option>
         </select>
       </div>
-
+      <button
+        v-if="user.type === 'admin'"
+        @click="toCinemaNew"
+        class="mr-auto mt-5 rounded-full text-white border-white border-2 py-2 px-10 hover:bg-gray-50 hover:text-black transition-all duration-200 font-economica marker:">
+        Add Cinema +
+      </button>
       <div class="w-full pt-20 grid place-items-center" v-if="isLoadingCinemas">
         <Spinner />
       </div>
+
       <div
         v-else
         class="w-full grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 lg:px-10 md:px-0 mt-10 place-items-evenly gap-10 max-h-[70vh] overflow-y-scroll">
@@ -34,7 +40,7 @@
 <script setup>
 import CinemaCard from '../components/CinemaCard.vue';
 import Spinner from '@/modules/Core/components/Spinner.vue';
-import { onMounted, ref } from 'vue';
+import { onMounted, ref, computed } from 'vue';
 import { useCinemaStore } from '../stores/Cinemas';
 import { useRouter } from 'vue-router';
 
@@ -42,7 +48,9 @@ const router = useRouter();
 const cinemaStore = useCinemaStore();
 const isLoadingCinemas = ref(true);
 const cinemaList = ref([]);
-
+const user = computed(() => {
+  return JSON.parse(localStorage.getItem('User'));
+});
 onMounted(async () => {
   isLoadingCinemas.value = true;
   cinemaList.value = await cinemaStore.getCinemas();
@@ -52,5 +60,8 @@ onMounted(async () => {
 function toCinema(id) {
   console.log('ID', id);
   router.push({ name: 'ViewCinema', params: { cinemaId: id } });
+}
+function toCinemaNew() {
+  router.push({ name: 'AddCinema' });
 }
 </script>

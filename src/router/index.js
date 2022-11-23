@@ -22,10 +22,19 @@ const router = createRouter({
       component: () => import('@/modules/Cinema/views/Cinema.vue'),
     },
     {
+      path: '/cinema/new',
+      name: 'AddCinema',
+      meta: {
+        auth: true,
+      },
+      component: () => import('@/modules/Cinema/views/AddCinema.vue'),
+    },
+    {
       path: '/login',
       name: 'ViewLogin',
       component: () => import('@/modules/Login/views/Login.vue'),
     },
+
     {
       path: '/:pathMatch(.*)*',
       name: '404',

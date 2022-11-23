@@ -11,10 +11,15 @@ export const useAuthStore = defineStore('auth', () => {
       password: 'admin',
       type: 'admin',
     },
+    {
+      username: 'cashier',
+      password: 'cashier',
+      type: 'cashier'
+    }
   ]);
 
   function login(loginData) {
-    localStorage.setItem('user', {});
+    localStorage.removeItem('User')
     cookies.set('authentication', false);
     const user = userData.value.find(
       (user) => user.username === loginData.username.toLowerCase()
@@ -22,9 +27,9 @@ export const useAuthStore = defineStore('auth', () => {
 
     if (user?.password === loginData.password) {
       delete user.password;
-      localStorage.setItem('user', user);
       cookies.set('authentication', true, '1d');
       router.push({ name: 'ViewHome' });
+      localStorage.setItem('User', JSON.stringify(user))
       return console.log('Logged in');
     }
     return console.log('Wrong username or password');

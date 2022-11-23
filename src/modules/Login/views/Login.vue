@@ -7,9 +7,7 @@
     <div
       class="col-span-4 hidden md:block h-full w-full overflow-hidden rounded-xl relative">
       <div
-        class="absolute top-0 z-1 bg-gradient-to-br from-[#170A1C] via-[#170A1C] to-[#0B7189] w-full h-full opacity-40 hover:opacity-0 transition-all duration-1000 ease-out">
-        a
-      </div>
+        class="absolute top-0 z-1 bg-gradient-to-br from-[#170A1C] via-[#170A1C] to-[#0B7189] w-full h-full opacity-40 hover:opacity-0 transition-all duration-1000 ease-out"></div>
       <img
         :src="bgImageUrl"
         alt="Cinema Image"
