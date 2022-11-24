@@ -3,7 +3,7 @@
     <div v-if="state === STATES.FETCHING_CINEMAS">
       <Spinner />
     </div>
-    <div v-else class="w-full px-[2%] max-w-[2000px]">
+    <div v-else class="w-full px-[2%] max-w-[5000px]">
       <div class="w-full font-oswald grid grid-cols-6">
         <!-- Cinema Information -->
         <div class="w-full h-full pr-10">
@@ -74,14 +74,11 @@
             <div class="cinema-screen bg-zinc-300">
               <h1 class="text-center text-zinc-500 tracking-wider">SCREEN</h1>
             </div>
-            <div class="mt-14 w-full cinema-seats pb-5">
-              <!-- <div
-                class="cinema-seat"
-                :style="{
-                  'grid-column-start': seat.colStart,
-                  'grid-row-start': seat.rowStart,
-                }"
-                v-for="seat in cinemaData.seats"></div> -->
+            <div class="mt-14 w-full cinema-seats mb-5">
+              <CinemaSeat
+                :id="idx"
+                v-for="(seat, idx) in 900"
+                @getSeatPosition="getSeatPosition" />
             </div>
           </div>
         </div>
@@ -99,6 +96,7 @@ import { onMounted, ref, computed, watch } from 'vue';
 import Spinner from '@/modules/Core/components/Spinner.vue';
 import { useCinemaStore } from '@/modules/Dashboard/stores/Cinemas';
 import BackButton from '@/modules/Core/components/BackButton.vue';
+import CinemaSeat from '../components/CinemaSeat.vue';
 
 const cinemaList = ref({});
 const route = useRoute();
@@ -110,6 +108,7 @@ const cinemaDetails = ref({
     adult: null,
     children: null,
   },
+  seats: [],
 });
 
 const STATES = {
@@ -122,6 +121,30 @@ const state = ref(STATES.IDLE);
 const newCinemaNum = computed(() => {
   return cinemaList.value.length + 1;
 });
+
+function getSeatPosition(seatNum, isRemoveSeat) {
+  const seatId = seatNum;
+  const coords = {
+    x: null,
+    y: null,
+  };
+
+  if (isRemoveSeat) {
+    cinemaDetails.value.seats = cinemaDetails.value.seats.filter(
+      (seat) => seat.seatNum !== seatId + 1
+    );
+  } else {
+    coords.x = seatId % 30;
+    coords.y = Math.floor(seatId / 30);
+
+    cinemaDetails.value.seats.push({
+      seatNum: seatId + 1,
+      isOccupied: false,
+      rowStart: coords.x,
+      colStart: coords.y,
+    });
+  }
+}
 
 onMounted(async () => {
   state.value = STATES.FETCHING_CINEMAS;
@@ -143,13 +166,8 @@ onMounted(async () => {
   grid-template-columns: repeat(30, 1fr);
   grid-template-rows: repeat(30, 1fr);
   place-items: center;
-  row-gap: 4px;
   height: 80vh;
-}
-
-.cinema-seat {
-  width: 80%;
-  height: 100%;
-  border: 1px solid red;
+  width: 100%;
+  border: 0.5px solid rgb(192, 192, 192);
 }
 </style>
