@@ -16,7 +16,7 @@
                 <li class="mt-2">{{ `Cinema ${cinemaData.cinemaNum}` }}</li>
                 <li>{{ cinemaData.title }}</li>
                 <l1>{{ dateShowing }}</l1>
-                <li>{{ `Adult: $${cinemaData.pricing?.adult}` }}</li>
+                <li class="mt-4">{{ `Adult: $${cinemaData.pricing?.adult}` }}</li>
                 <li>{{ `Children: $${cinemaData.pricing?.children}` }}</li>
                 <li>{{ `Occupied: ` }}</li>
                 <li>{{ `Unoccupied: ` }}</li>
